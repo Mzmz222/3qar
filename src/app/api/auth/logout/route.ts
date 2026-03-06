@@ -1,0 +1,8 @@
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+
+export async function POST() {
+    const cookieStore = await cookies();
+    cookieStore.delete("admin_session");
+    redirect("/admin/login");
+}
