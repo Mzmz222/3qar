@@ -22,7 +22,7 @@ export default async function PrintPropertyPage(props: Props) {
 
     // Settings
     const { data: settings } = await supabase.from("site_settings").select("*").limit(1).single();
-    const siteName = settings?.site_name || "منصة العقارات الأحساء";
+    const siteName = settings?.site_name || "ماجد النوبي للعقار";
 
     // Public URL for QR
     // Determine base host (fallback to localhost for dev)

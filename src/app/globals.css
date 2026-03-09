@@ -1,69 +1,172 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap');
 
 @theme inline {
-  --font-sans: var(--font-heading), system-ui, sans-serif;
-  --font-drama: var(--font-drama), Georgia, serif;
-  --font-data: var(--font-data), monospace;
-
-  --color-sand: #D8CBB5;
-  --color-deep-brown: #3E2F25;
-  --color-cream: #F6F2EA;
-  --color-charcoal: #1B1B1B;
-
-  --radius-cinematic: 2.5rem;
+  --font-sans: 'Cairo', 'Tajawal', system-ui, sans-serif;
+  --color-primary: #5D4037;
+  --color-primary-dark: #4E342E;
+  --color-primary-light: #795548;
+  --color-active-bg: #D7CCC8;
+  --color-active-text: #5D4037;
+  --color-bg: #FAFAFA;
+  --color-card: #FFFFFF;
+  --color-border: #E8E0DC;
+  --color-text: #111827;
+  --color-text-muted: #6B7280;
+  --color-brown-50: #EFEBE9;
+  --color-brown-100: #D7CCC8;
+  --color-brown-200: #BCAAA4;
+  --color-brown-800: #4E342E;
+  --color-brown-900: #3E2723;
 }
 
-:root {
-  --background: #F6F2EA;
-  /* Cream as main background */
-  --foreground: #1B1B1B;
-  /* Charcoal for text */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #FAFAFA;
+  color: #111827;
+  direction: rtl;
+  text-align: right;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Hide scrollbar for a cleaner look */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-deep-brown);
-  border-radius: 10px;
+  background: #D7CCC8;
+  border-radius: 4px;
 }
 
-@layer utilities {
-  .btn-cinematic {
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+::-webkit-scrollbar-thumb:hover {
+  background: #5D4037;
+}
+
+/* Leaflet fixes */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  direction: ltr;
+}
+
+/* Image gallery slider */
+.gallery-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-slider {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Transitions */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 
-  .btn-cinematic:hover {
-    transform: scale(1.03) translateY(-1px);
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skeleton animation */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
   }
 
-  .btn-cinematic::before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: currentColor;
-    opacity: 0.1;
-    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 936px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+}
+
+/* Toast animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
 
-  .btn-cinematic:hover::before {
-    transform: translateY(-100%);
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.toast-exit {
+  animation: slideOut 0.3s ease-in forwards;
+}
+
+/* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Number inputs - hide arrows */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

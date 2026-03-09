@@ -26,7 +26,7 @@ export default async function SettingsPage() {
                             defaultValue={settings?.site_name}
                             required
                             className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border"
-                            placeholder="مثال: منصة العقارات الأحساء"
+                            placeholder="مثال: ماجد النوبي للعقار"
                         />
                     </div>
 

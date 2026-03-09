@@ -1,42 +1,35 @@
-import { createClient } from "@/lib/supabase/server";
-import CinematicHome from "@/components/CinematicHome";
+import { createClient } from "@supabase/supabase-js";
+import HomeClient from "./HomeClient";
 
-export const revalidate = 60; // ISR Support
+export const revalidate = 3600;
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}) {
-  const supabase = await createClient();
+const sb = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
-  // Parse search params (Next 15 treats searchParams as a Promise)
-  const resolvedParams = await searchParams;
-  const districtFilter = typeof resolvedParams.district === "string" ? resolvedParams.district : null;
-  const priceMaxFilter = typeof resolvedParams.price_max === "string" ? parseInt(resolvedParams.price_max) : null;
+export default async function HomePage() {
+  const [propertiesResult, citiesResult, neighborhoodsResult, settingsResult] = await Promise.all([
+    sb.from("properties")
+      .select("*, cities(name), neighborhoods(name)")
+      .order("is_featured", { ascending: false })
+      .order("created_at", { ascending: false })
+      .range(0, 11),
+    sb.from("cities").select("*").order("name"),
+    sb.from("neighborhoods").select("*").order("name"),
+    sb.from("settings").select("*").limit(1).single(),
+  ]);
 
-  // Build the query
-  let query = supabase
-    .from("properties")
-    .select("*, districts(name), property_images(image_url, is_cover)")
-    .eq("status", "published")
-    .order("is_featured", { ascending: false })
-    .order("created_at", { ascending: false });
-
-  if (districtFilter) {
-    query = query.eq("district", districtFilter);
-  }
-
-  // Not doing strict price filtering because price is currently a text column (example: "1,500,000 ريال") 
-  // For production, price should be numeric, but according to schema it's text.
-  // We will just do a basic fetch based on district.
-
-  const { data: properties } = await query;
-  const { data: districts } = await supabase.from("districts").select("*").order("name");
+  // Get total count
+  const { count } = await sb.from("properties").select("*", { count: "exact", head: true });
 
   return (
-    <>
-      <CinematicHome properties={properties || []} districts={districts || []} />
-    </>
+    <HomeClient
+      initialProperties={propertiesResult.data || []}
+      initialCount={count || 0}
+      cities={citiesResult.data || []}
+      neighborhoods={neighborhoodsResult.data || []}
+      settings={settingsResult.data}
+    />
   );
 }

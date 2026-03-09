@@ -290,7 +290,7 @@ export default function CinematicHome({ properties, districts }: { properties: a
             <p className="font-heading opacity-50 text-sm mb-2">رقم رخصة فال العقارية:</p>
             <p className="font-data text-2xl text-white font-bold tracking-widest">1100218438</p>
             <div className="mt-16 opacity-30 font-heading text-xs">
-              جميع الحقوق محفوظة &copy; {new Date().getFullYear()} <br />عقار الأحساء - Cinematic OS
+              جميع الحقوق محفوظة &copy; {new Date().getFullYear()} <br />ماجد النوبي للعقار
             </div>
           </div>
         </div>
