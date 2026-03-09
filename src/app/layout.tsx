@@ -19,7 +19,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="bg-[#FAFAFA] text-[#111827] font-[Cairo,Tajawal,system-ui,sans-serif] antialiased">
-        {children}
+        <div className="flex flex-col min-h-screen">
+          <main className="flex-grow">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

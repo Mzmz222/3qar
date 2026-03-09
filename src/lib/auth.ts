@@ -15,7 +15,8 @@ export async function setAuthCookie(response: Response): Promise<void> {
 
 export function createSessionCookieHeader(): string {
     const maxAge = 86400; // 24 hours
-    return `${COOKIE_NAME}=${SESSION_VALUE}; HttpOnly; Path=/; Max-Age=${maxAge}; SameSite=Lax`;
+    const secure = process.env.NODE_ENV === "production" ? "Secure;" : "";
+    return `${COOKIE_NAME}=${SESSION_VALUE}; HttpOnly; Path=/; ${secure} Max-Age=${maxAge}; SameSite=Lax`;
 }
 
 export function clearSessionCookieHeader(): string {

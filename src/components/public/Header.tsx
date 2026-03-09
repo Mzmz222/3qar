@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Search, ChevronDown, X } from "lucide-react";
 import PropertyTypePicker from "./PropertyTypePicker";
 
@@ -55,22 +56,22 @@ export default function Header({ cities, neighborhoods, filters, onFiltersChange
                 <div className="max-w-7xl mx-auto px-4">
                     {/* Top bar: Logo */}
                     <div className="flex items-center justify-center py-3 border-b border-gray-100">
-                        <a href="/" className="flex items-center">
+                        <Link href="/" className="flex items-center">
                             <Image
-                                src="/logo.jfif"
-                                alt="الشعار"
+                                src="/logo.png"
+                                alt="عقار الأحساء"
                                 width={120}
                                 height={50}
                                 className="h-12 w-auto object-contain"
                                 priority
                             />
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Row 1: Offer type + Search */}
-                    <div className="flex items-center gap-2 py-3 border-b border-gray-100">
+                    <div className="flex flex-wrap items-center gap-2 py-3 border-b border-gray-100">
                         {/* Offer Type Dropdown */}
-                        <div className="relative">
+                        <div className="relative flex-shrink-0">
                             <button
                                 id="offer-type-btn"
                                 onClick={() => {
@@ -116,13 +117,13 @@ export default function Header({ cities, neighborhoods, filters, onFiltersChange
                     </div>
 
                     {/* Row 2: Property type + Construction status */}
-                    <div className="flex items-center gap-2 py-3 border-b border-gray-100 overflow-x-auto">
+                    <div className="flex flex-wrap items-center gap-2 py-3 border-b border-gray-100">
                         {/* Property type picker */}
                         <button
                             onClick={() => setTypePickerOpen(true)}
                             className={`flex items-center gap-1 px-4 py-2 rounded-full border text-sm font-semibold transition-colors whitespace-nowrap ${filters.propertyType
-                                    ? "bg-[#D7CCC8] text-[#5D4037] border-[#D7CCC8]"
-                                    : "border-gray-200 text-gray-600 hover:border-[#5D4037]"
+                                ? "bg-[#D7CCC8] text-[#5D4037] border-[#D7CCC8]"
+                                : "border-gray-200 text-gray-600 hover:border-[#5D4037]"
                                 }`}
                         >
                             {selectedTypeName}
@@ -146,8 +147,8 @@ export default function Header({ cities, neighborhoods, filters, onFiltersChange
                                     key={s}
                                     onClick={() => update({ constructionStatus: val })}
                                     className={`px-4 py-2 rounded-full border text-sm font-semibold transition-colors whitespace-nowrap ${active
-                                            ? "bg-[#D7CCC8] text-[#5D4037] border-[#D7CCC8]"
-                                            : "border-gray-200 text-gray-600 hover:border-[#5D4037]"
+                                        ? "bg-[#D7CCC8] text-[#5D4037] border-[#D7CCC8]"
+                                        : "border-gray-200 text-gray-600 hover:border-[#5D4037]"
                                         }`}
                                 >
                                     {s}
@@ -157,7 +158,7 @@ export default function Header({ cities, neighborhoods, filters, onFiltersChange
                     </div>
 
                     {/* Row 3: City + Neighborhood */}
-                    <div className="flex items-center gap-2 py-3">
+                    <div className="flex flex-wrap items-center gap-2 py-3">
                         {/* City dropdown */}
                         <div className="relative">
                             <button
@@ -167,8 +168,8 @@ export default function Header({ cities, neighborhoods, filters, onFiltersChange
                                     setOfferDropOpen(false);
                                 }}
                                 className={`flex items-center gap-1 px-4 py-2 rounded-xl border text-sm font-semibold transition-colors ${filters.cityId
-                                        ? "bg-[#D7CCC8] text-[#5D4037] border-[#D7CCC8]"
-                                        : "border-gray-200 text-gray-600 hover:border-[#5D4037]"
+                                    ? "bg-[#D7CCC8] text-[#5D4037] border-[#D7CCC8]"
+                                    : "border-gray-200 text-gray-600 hover:border-[#5D4037]"
                                     }`}
                             >
                                 {selectedCityName}
@@ -205,8 +206,8 @@ export default function Header({ cities, neighborhoods, filters, onFiltersChange
                                 }}
                                 disabled={!filters.cityId && filteredNeighborhoods.length === 0}
                                 className={`flex items-center gap-1 px-4 py-2 rounded-xl border text-sm font-semibold transition-colors ${filters.neighborhoodId
-                                        ? "bg-[#D7CCC8] text-[#5D4037] border-[#D7CCC8]"
-                                        : "border-gray-200 text-gray-600 hover:border-[#5D4037] disabled:opacity-40"
+                                    ? "bg-[#D7CCC8] text-[#5D4037] border-[#D7CCC8]"
+                                    : "border-gray-200 text-gray-600 hover:border-[#5D4037] disabled:opacity-40"
                                     }`}
                             >
                                 {selectedNeighName}

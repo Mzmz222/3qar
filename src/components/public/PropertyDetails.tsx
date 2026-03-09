@@ -3,10 +3,14 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ArrowRight, Share2, Phone, MessageCircle, X, ChevronDown } from "lucide-react";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { ArrowRight, Share2, Phone, MessageCircle, X, ChevronDown, Home, ChevronLeft } from "lucide-react";
 import ImageGallery from "./ImageGallery";
-import MapView from "./MapView";
+const MapView = dynamic(() => import("./MapView"), { ssr: false });
 import { formatShareMessage, formatWhatsAppMessage } from "@/lib/formatMessage";
+
+const OFFICIAL_PHONE = "0591538123";
 
 function formatPrice(price: number) {
     return price.toLocaleString("ar-SA");
@@ -91,9 +95,9 @@ export default function PropertyDetails({ property, settings, nearbyProperties }
             body: JSON.stringify({ property_id: property.id }),
         }).catch(() => { });
 
-        const phone = settings.office_phone_1?.replace(/\D/g, "") || "";
+        const phone = OFFICIAL_PHONE;
         const msg = encodeURIComponent(formatWhatsAppMessage(property, propertyUrl));
-        window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+        window.open(`https://wa.me/966${phone.substring(1)}?text=${msg}`, "_blank");
     };
 
     const infoFields = [
@@ -190,7 +194,19 @@ export default function PropertyDetails({ property, settings, nearbyProperties }
             </div>
 
             {/* Content */}
-            <div className="max-w-3xl mx-auto px-4 py-6 space-y-6">
+            <div className="max-w-3xl mx-auto px-4 py-4 space-y-6 pb-24 md:pb-6">
+                {/* Breadcrumbs */}
+                <nav className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                    <Link href="/" className="hover:text-[#5D4037] flex items-center gap-1">
+                        <Home className="w-3 h-3" />
+                        الرئيسية
+                    </Link>
+                    <ChevronLeft className="w-3 h-3" />
+                    <span>{property.offer_type}</span>
+                    <ChevronLeft className="w-3 h-3" />
+                    <span className="text-gray-900 font-medium truncate">{property.property_type} في {property.neighborhoods?.name}</span>
+                </nav>
+
                 {/* Gallery */}
                 <ImageGallery
                     coverImage={property.cover_image}
@@ -199,19 +215,24 @@ export default function PropertyDetails({ property, settings, nearbyProperties }
                 />
 
                 {/* Price + Location */}
-                <div>
-                    <p className="text-3xl font-black text-[#5D4037]">
-                        {formatPrice(property.price)}
-                        <span className="text-base font-normal text-gray-500 mr-1">ريال</span>
-                    </p>
-                    <p className="text-gray-500 mt-1 text-sm">
-                        {[property.neighborhoods?.name, property.cities?.name].filter(Boolean).join("، ")}
-                    </p>
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <p className="text-3xl font-black text-[#5D4037]">
+                            {formatPrice(property.price)}
+                            <span className="text-base font-normal text-gray-500 mr-1">ريال</span>
+                        </p>
+                        <p className="text-gray-500 mt-1 text-sm flex items-center gap-1">
+                            {[property.neighborhoods?.name, property.cities?.name].filter(Boolean).join("، ")}
+                        </p>
+                    </div>
+                    <div className="text-xs text-gray-400 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100">
+                        رقم رخصة فال: 1100218438
+                    </div>
                 </div>
 
                 {/* Description */}
                 {property.description && (
-                    <div className="bg-white rounded-2xl p-5 border border-gray-100">
+                    <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
                         <h2 className="font-bold text-gray-900 mb-3">الوصف</h2>
                         <p className={`text-gray-600 text-sm leading-relaxed ${!descExpanded ? "line-clamp-3" : ""}`}>
                             {property.description}
@@ -228,7 +249,7 @@ export default function PropertyDetails({ property, settings, nearbyProperties }
                 )}
 
                 {/* Info grid */}
-                <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
                     <h2 className="font-bold text-gray-900 p-5 border-b border-gray-100">معلومات العقار</h2>
                     <div className="grid grid-cols-2">
                         {infoFields.map((field, i) => (
@@ -245,7 +266,7 @@ export default function PropertyDetails({ property, settings, nearbyProperties }
 
                 {/* Map */}
                 {(property.latitude && property.longitude) || nearbyWithCoords.length > 0 ? (
-                    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
                         <h2 className="font-bold text-gray-900 p-5 border-b border-gray-100">الموقع</h2>
                         <div className="h-[350px]">
                             <MapView
@@ -274,6 +295,24 @@ export default function PropertyDetails({ property, settings, nearbyProperties }
                         </div>
                     </div>
                 ) : null}
+            </div>
+
+            {/* Mobile Sticky Contact Bar */}
+            <div className="md:hidden fixed bottom-6 left-4 right-4 z-50 flex items-center gap-2 bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-gray-100 shadow-xl">
+                <a
+                    href={`tel:${OFFICIAL_PHONE}`}
+                    className="flex-1 flex items-center justify-center gap-2 bg-[#5D4037] text-white py-3.5 rounded-xl font-bold text-sm"
+                >
+                    <Phone className="w-4 h-4" />
+                    اتصال
+                </a>
+                <button
+                    onClick={handleWhatsApp}
+                    className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white py-3.5 rounded-xl font-bold text-sm"
+                >
+                    <MessageCircle className="w-4 h-4" />
+                    واتساب
+                </button>
             </div>
         </div>
     );

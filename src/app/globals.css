@@ -32,12 +32,20 @@ html {
 }
 
 body {
-  background-color: #FAFAFA;
-  color: #111827;
+  background-color: #FAFAFA !important;
+  color: #111827 !important;
   direction: rtl;
   text-align: right;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Force light mode regardless of system settings */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #FAFAFA !important;
+    color: #111827 !important;
+  }
 }
 
 /* Scrollbar */

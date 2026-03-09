@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { KeyRound } from "lucide-react";
 
 export default function AdminLoginPage() {
@@ -43,13 +44,16 @@ export default function AdminLoginPage() {
             <div className="w-full max-w-sm">
                 {/* Logo */}
                 <div className="flex justify-center mb-8">
-                    <Image
-                        src="/logo.jfif"
-                        alt="الشعار"
-                        width={100}
-                        height={60}
-                        className="h-16 w-auto object-contain"
-                    />
+                    <Link href="/">
+                        <Image
+                            src="/logo.png"
+                            alt="عقار الأحساء"
+                            width={120}
+                            height={60}
+                            className="h-16 w-auto object-contain"
+                            priority
+                        />
+                    </Link>
                 </div>
 
                 {/* Card */}
