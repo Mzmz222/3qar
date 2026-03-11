@@ -17,7 +17,7 @@ export interface Property {
     area_size?: number;
     price: number;
     cover_image: string;
-    images_gallery?: string[];
+    gallery_images?: string[];
     is_featured?: boolean;
     cities?: { name: string };
     neighborhoods?: { name: string };
@@ -29,7 +29,7 @@ function formatPrice(price: number) {
 
 export default function PropertyCard({ property }: { property: Property }) {
     const [imgIdx, setImgIdx] = useState(0);
-    const allImages = [property.cover_image, ...(property.images_gallery || [])].filter(Boolean);
+    const allImages = [property.cover_image, ...(property.gallery_images || [])].filter(Boolean);
 
     return (
         <Link

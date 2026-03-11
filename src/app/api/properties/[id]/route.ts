@@ -60,7 +60,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
         // Get property to find images
         const { data: property } = await sb
             .from("properties")
-            .select("cover_image, images_gallery")
+            .select("cover_image, gallery_images")
             .eq("id", id)
             .single();
 
@@ -79,8 +79,8 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
                 const p = extractPath(property.cover_image);
                 if (p) filesToDelete.push(p);
             }
-            if (property.images_gallery?.length) {
-                for (const img of property.images_gallery) {
+            if (property.gallery_images?.length) {
+                for (const img of property.gallery_images) {
                     const p = extractPath(img);
                     if (p) filesToDelete.push(p);
                 }

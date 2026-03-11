@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5D4037", // Custom brown requested
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="max-w-md mx-auto min-h-screen flex flex-col bg-background-light dark:bg-background-dark shadow-xl">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-zinc-900 p-4 border-b border-primary/10 justify-between sticky top-0 z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+<h2 class="text-lg font-bold leading-tight tracking-tight">إدارة المواقع والإعدادات</h2>
+</div>
+<button class="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto pb-24">
+<!-- Cities & Neighborhoods Section -->
+<section class="p-4">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold text-primary">المدن والأحياء</h2>
+<button class="flex items-center gap-1 bg-primary text-white px-3 py-1.5 rounded-lg text-sm font-medium">
+<span class="material-symbols-outlined text-sm">add</span>
+                        إضافة جديد
+                    </button>
+</div>
+<div class="space-y-3">
+<!-- City Item 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-zinc-900 p-3 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div class="flex-1">
+<p class="font-bold">الرياض</p>
+<p class="text-xs text-slate-500">12 حي مسجل</p>
+</div>
+<button class="flex h-8 px-4 items-center justify-center rounded-lg bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 text-sm font-medium transition-colors hover:bg-red-100">
+                            حذف
+                        </button>
+</div>
+<!-- City Item 2 -->
+<div class="flex items-center gap-4 bg-white dark:bg-zinc-900 p-3 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div class="flex-1">
+<p class="font-bold">جدة</p>
+<p class="text-xs text-slate-500">8 أحياء مسجلة</p>
+</div>
+<button class="flex h-8 px-4 items-center justify-center rounded-lg bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 text-sm font-medium transition-colors hover:bg-red-100">
+                            حذف
+                        </button>
+</div>
+<!-- City Item 3 -->
+<div class="flex items-center gap-4 bg-white dark:bg-zinc-900 p-3 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 size-10">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div class="flex-1">
+<p class="font-bold">الدمام</p>
+<p class="text-xs text-slate-500">5 أحياء مسجلة</p>
+</div>
+<button class="flex h-8 px-4 items-center justify-center rounded-lg bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 text-sm font-medium transition-colors hover:bg-red-100">
+                            حذف
+                        </button>
+</div>
+</div>
+</section>
+<div class="h-px bg-primary/10 mx-4 my-2"></div>
+<!-- General Settings Section -->
+<section class="p-4 space-y-6">
+<h2 class="text-xl font-bold text-primary mb-4">الإعدادات العامة</h2>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium mb-1.5 opacity-80">اسم الموقع</label>
+<input class="w-full rounded-xl border-primary/20 bg-white dark:bg-zinc-900 focus:ring-primary focus:border-primary" type="text" value="عقارات المملكة"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1.5 opacity-80">رابط مجموعة الواتساب</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-lg">link</span>
+<input class="w-full rounded-xl border-primary/20 bg-white dark:bg-zinc-900 pr-4 pl-10 focus:ring-primary focus:border-primary" dir="ltr" type="url" value="https://chat.whatsapp.com/..."/>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div>
+<label class="block text-sm font-medium mb-1.5 opacity-80">هواتف المكتب</label>
+<input class="w-full rounded-xl border-primary/20 bg-white dark:bg-zinc-900 focus:ring-primary focus:border-primary" dir="ltr" placeholder="+966 50 000 0000" type="tel"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1.5 opacity-80">رقم ترخيص فال (FAL)</label>
+<input class="w-full rounded-xl border-primary/20 bg-white dark:bg-zinc-900 focus:ring-primary focus:border-primary" placeholder="12345678" type="text"/>
+</div>
+</div>
+</div>
+<!-- Admin PIN Section -->
+<div class="bg-primary/5 p-4 rounded-2xl border border-primary/10 space-y-4">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined">lock_reset</span>
+                        تغيير رمز PIN للمشرف
+                    </div>
+<div class="space-y-3">
+<input class="w-full rounded-xl border-primary/20 bg-white dark:bg-zinc-900 focus:ring-primary focus:border-primary text-center tracking-widest" placeholder="الرمز الحالي" type="password"/>
+<div class="grid grid-cols-2 gap-3">
+<input class="w-full rounded-xl border-primary/20 bg-white dark:bg-zinc-900 focus:ring-primary focus:border-primary text-center tracking-widest" placeholder="الرمز الجديد" type="password"/>
+<input class="w-full rounded-xl border-primary/20 bg-white dark:bg-zinc-900 focus:ring-primary focus:border-primary text-center tracking-widest" placeholder="تأكيد الرمز" type="password"/>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 active:scale-[0.98] transition-transform">
+                    حفظ كافة التغييرات
+                </button>
+</section>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-zinc-950 border-t border-primary/10 flex items-center justify-around px-2 py-3 z-20">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-medium">المواقع</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">settings</span>
+<span class="text-[10px] font-bold">الإعدادات</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">الملف</span>
+</a>
+</div>
+</div>
+</body></html>

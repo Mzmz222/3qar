@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "dark-brown": "#5D4037",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Public Sans", "sans-serif";
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-4xl mx-auto pb-20">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-50 flex items-center bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 p-4 justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">arrow_forward</span>
+<h2 class="text-xl font-bold leading-tight">إضافة / تعديل عقار</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 px-6 bg-dark-brown text-white gap-2 text-sm font-bold shadow-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span>حفظ التعديلات</span>
+</button>
+</div>
+</div>
+<form class="p-4 space-y-8">
+<!-- Media Section -->
+<section>
+<h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">image</span>
+                    الصور والوسائط
+                </h2>
+<div class="bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+<div class="flex flex-col @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start gap-4">
+<div class="w-full @xl:w-1/3 bg-slate-100 dark:bg-slate-700 bg-center bg-no-repeat aspect-video bg-cover rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 flex items-center justify-center overflow-hidden" data-alt="Main exterior view of a luxury modern house" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDB1qce1i-ZWEmkAGGyfjPMMGV0gVe-aH4JngsXJyrKAadY7aZPzoQtju8IVlz7unZuaYCXG2c1KUI0Lp6u_8l4eIIaQYlxlhlOxIi_u7U0yHnI4kRg0P98TaNraU7LMniLcNH7-3AlIzlHKRV8xowTeSp47kwgWD9pEgco_c_0j_fWoUpzlPLgQNe0kEp5cKtuTs7CYG_95ZUsgO-KIhxs3OfVb4XNF-HCXxgPZ9ZNE-hKHqsh_WprPCPM1jJF5IhBmy301u0ywg");'>
+</div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 py-2">
+<p class="text-lg font-bold">صورة الغلاف</p>
+<div class="flex items-end gap-3 justify-between">
+<p class="text-slate-500 dark:text-slate-400 text-sm">أبعاد الصورة المفضلة 1200x800 بكسل</p>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-xl h-9 px-4 bg-primary text-white text-sm font-medium hover:bg-primary/90" type="button">
+                                        تغيير الصورة
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<p class="font-bold mb-3">معرض الصور</p>
+<div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3">
+<div class="aspect-square bg-slate-100 dark:bg-slate-700 rounded-xl overflow-hidden relative group" data-alt="Interior view of a modern kitchen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZdt7dE5Tgdsy7IZg-jrMeRWZMaFcK-e5t0y7cDUSNuJ6aaFk8NRXHBtE61I4zhN3FAuYfLn8GusZ7Xp-kjwjEHCbF5StLLlM7vslUHlVZi9wN5tI1bGEYjMVHIZp40QDil06E8YKpnAg71Zzw8yg65Aq1-1-CyPGjYC6XJc867NkrrCPie2JkmVb-P2ZC2JnQWq2yk2TkQ85h9dyju5zBr2m8QLKyFarT5XsqX5ZPfXtIcE3j21YAqRID_sbtQikSTvqfagYX2A");'>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="material-symbols-outlined text-white cursor-pointer">delete</span>
+</div>
+</div>
+<div class="aspect-square bg-slate-100 dark:bg-slate-700 rounded-xl overflow-hidden relative group" data-alt="Modern living room interior" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBu5AAtdqNNj1x4Fzs88kyrm854lXdMXlcFzNcy3YC0kO7bt8FIPYqDeQC7tzyUWyeHeOEZZjJmVNdooyRfXlvAdowCN0-h--8yv5jnUGtqvUW_qow8hAl-T72gsf0TirdSNDdWzfc1gpOSLtOljL-mCI4vSV2wEEB5tOSfrs4OJ_lCMpnKPIxvQckPpRx3zx4NEhTI-BIy3xE_mJIY34fpjkg53-2sOaL02qG9iQIQdVZsdgJSTBYWws6IktqkHS8bNvw6vRa9LA");'>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="material-symbols-outlined text-white cursor-pointer">delete</span>
+</div>
+</div>
+<button class="aspect-square rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 flex flex-col items-center justify-center gap-1 text-slate-400 hover:text-primary hover:border-primary transition-all" type="button">
+<span class="material-symbols-outlined text-3xl">add_a_photo</span>
+<span class="text-xs font-bold">إضافة صور</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Basic Details -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                        المعلومات الأساسية
+                    </h2>
+<div>
+<label class="block text-sm font-medium mb-1">نوع العرض</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
+<option>بيع</option>
+<option>إيجار</option>
+<option>استثمار</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">نوع العقار</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
+<option>فيلا</option>
+<option>شقة</option>
+<option>أرض</option>
+<option>عمارة</option>
+<option>محل تجاري</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-sm font-medium mb-1">المدينة</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
+<option>الرياض</option>
+<option>جدة</option>
+<option>الدمام</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">الحي</label>
+<input class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none" placeholder="اسم الحي" type="text"/>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h2 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">straighten</span>
+                        المساحات والقياسات
+                    </h2>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-sm font-medium mb-1">الطول (1)</label>
+<input class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none" type="number" value="20"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">الطول (2)</label>
+<input class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none" type="number" value="15"/>
+</div>
+</div>
+<div class="bg-primary/10 border border-primary/20 p-4 rounded-xl flex items-center justify-between">
+<div>
+<p class="text-xs text-slate-500 dark:text-slate-400">إجمالي المساحة المحسوبة</p>
+<p class="text-2xl font-bold text-primary">300 <span class="text-sm font-normal text-slate-600 dark:text-slate-300">متر مربع</span></p>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl">calculate</span>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">عرض الشارع (متر)</label>
+<input class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none" placeholder="مثال: 20" type="number"/>
+</div>
+</div>
+</section>
+<!-- Pricing & Status -->
+<section class="space-y-6">
+<h2 class="text-xl font-bold flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+                    السعر والتفاصيل الفنية
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div>
+<label class="block text-sm font-medium mb-1">السعر (ريال سعودي)</label>
+<input class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 font-bold text-primary focus:ring-2 focus:ring-primary outline-none" placeholder="0.00" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">حالة البناء</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
+<option>جاهز</option>
+<option>تحت الإنشاء</option>
+<option>على الخارطة</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">التأثيث</label>
+<select class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none">
+<option>غير مؤثث</option>
+<option>نصف مؤثث</option>
+<option>مؤثث بالكامل</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium mb-2">جهة العرض</label>
+<div class="flex gap-4">
+<label class="flex-1 flex items-center justify-center gap-2 p-3 border-2 border-primary bg-primary/5 rounded-xl cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary" name="source" type="radio"/>
+<span class="font-bold">مباشر</span>
+</label>
+<label class="flex-1 flex items-center justify-center gap-2 p-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl cursor-pointer hover:border-primary/50 transition-colors">
+<input class="text-primary focus:ring-primary" name="source" type="radio"/>
+<span class="font-bold">وسيط</span>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">رابط Google Maps</label>
+<div class="relative">
+<input class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-primary outline-none" placeholder="https://goo.gl/maps/..." type="url"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">location_on</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">وصف العقار</label>
+<textarea class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-primary outline-none" placeholder="اكتب تفاصيل إضافية عن العقار هنا..." rows="4"></textarea>
+</div>
+</section>
+<!-- Location Preview (Placeholder) -->
+<section>
+<h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">map</span>
+                    موقع العقار
+                </h2>
+<div class="w-full h-48 bg-slate-200 dark:bg-slate-700 rounded-xl overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Interactive map preview" data-location="Riyadh, Saudi Arabia" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOEqD-_q69bzSf870MoZ3uJLMtR1sy-4eaN2Eq1BowZOaRfPm8_lHbl5VWmkqa7sPU-izoc11psWTlTBB34nKjkAPgs6JBjALC3Rlx_4N2_cZK4hjEQztsR2JoxDzZtQ6jjOt-TxnlcDpa0xEbwN6dTkIWb4ZJsq7feHok2HMZ9L1TEpL1SmWnLF3SoKsY5ehS4OWkJNDqwesqe6z9htAmin1I8HJbssw2G-mV2OGQBYWrqmljlrT8AMaOhBIBFzJue5sEjmNy2g");'>
+</div>
+<div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+<div class="bg-white/90 dark:bg-slate-800/90 p-4 rounded-xl shadow-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-primary animate-bounce">location_on</span>
+<span class="font-bold">تم تحديد الموقع تلقائياً من الرابط</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Actions -->
+<div class="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row gap-4">
+<button class="flex-1 flex items-center justify-center rounded-xl h-14 bg-dark-brown text-white gap-2 text-lg font-bold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all" type="submit">
+<span class="material-symbols-outlined">save</span>
+                    حفظ ونشر العقار
+                </button>
+<button class="px-8 rounded-xl h-14 border-2 border-slate-300 dark:border-slate-700 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" type="button">
+                    إلغاء
+                </button>
+</div>
+</form>
+</div>
+</body></html>

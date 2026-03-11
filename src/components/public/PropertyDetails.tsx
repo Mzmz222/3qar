@@ -37,7 +37,7 @@ interface Property {
     price: number;
     description?: string;
     cover_image: string;
-    images_gallery?: string[];
+    gallery_images?: string[];
     google_maps_link?: string;
     latitude?: number;
     longitude?: number;
@@ -210,7 +210,7 @@ export default function PropertyDetails({ property, settings, nearbyProperties }
                 {/* Gallery */}
                 <ImageGallery
                     coverImage={property.cover_image}
-                    gallery={property.images_gallery}
+                    gallery={property.gallery_images}
                     alt={`${property.property_type} ${property.offer_type}`}
                 />
 

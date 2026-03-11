@@ -29,8 +29,9 @@ export function formatShareMessage(property: Property, settings: Settings, prope
     const lines: string[] = [];
 
     lines.push(property.direct_or_broker);
+    lines.push("✨");
 
-    if (property.parcel_number) lines.push(`رقم القطعة: ${property.parcel_number}`);
+    if (property.parcel_number) lines.push(`📜 رقم القطعة: ${property.parcel_number}`);
     if (property.neighborhoods?.name) lines.push(`الحي: ${property.neighborhoods.name}`);
     if (property.length_1 && property.length_2) lines.push(`الأطوال: ${property.length_1}×${property.length_2}`);
     if (property.area_size) lines.push(`المساحة: ${property.area_size}م²`);
@@ -40,7 +41,7 @@ export function formatShareMessage(property: Property, settings: Settings, prope
     const phones = [settings.office_phone_1, settings.office_phone_2].filter(Boolean);
     if (phones.length > 0) lines.push(`للتواصل: ${phones.join(' | ')}`);
     if (settings.site_name) lines.push(settings.site_name);
-    if (property.google_maps_link) lines.push(`📍الموقع: ${property.google_maps_link}`);
+    if (property.google_maps_link) lines.push(`📍 الموقع: ${property.google_maps_link}`);
     if (settings.whatsapp_group_link) lines.push(`رابط القروب: ${settings.whatsapp_group_link}`);
 
     return lines.join('\n');

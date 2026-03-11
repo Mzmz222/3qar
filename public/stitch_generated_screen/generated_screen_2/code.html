@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Majed Al-Nubi Real Estate - Property Type Selection</title>
+<!-- Tailwind CSS CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#5D4037',
+            secondary: '#D7CCC8',
+            accent: '#8D6E63',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-transitions">
+    /* Smooth transition for active tab and selection */
+    .tab-transition {
+      transition: all 0.3s ease;
+    }
+    .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+<!-- BEGIN: Home Screen Background (Contextual Overlay) -->
+<main class="fixed inset-0 overflow-y-auto pointer-events-none opacity-50 grayscale-[0.5]">
+<div class="max-w-md mx-auto bg-white min-h-screen pb-20">
+<!-- Header Placeholder -->
+<header class="p-4 flex flex-col items-center">
+<img alt="Logo" class="h-16 mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlBuU2UOp0-6tsH5V8AyPmXj6HK_SFUiOO5j9jxNZUKDi0YoBDxuGoeH4YGHWK4okveNnojj1KXNPNizQOLCzjaBQGX3svpBOlLON8Nt0tMU4rsRRcu1Rr26f2-8lR8zqELNt0XGRwiPbiLi1CJnagGpABNOc3SVdKLWV98dicyN1qnFGqDgOi_ShX1di7n1niSLPpW20b5q6r32cus6VX-kHV5Bnv3x7ulm5k6MuywvzNtZg9aSQGZAwm8kQ3cnBZLtmtEiMsMA"/>
+<div class="w-full flex gap-2">
+<div class="flex-1 h-10 border rounded-lg bg-gray-50"></div>
+<div class="w-20 h-10 border rounded-lg bg-gray-50"></div>
+</div>
+</header>
+<!-- List Items Mockup -->
+<section class="p-4 space-y-4">
+<div class="bg-white rounded-xl shadow h-64 border"></div>
+<div class="bg-white rounded-xl shadow h-64 border"></div>
+</section>
+</div>
+</main>
+<!-- END: Home Screen Background -->
+<!-- BEGIN: Property Type Modal -->
+<div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4" id="propertyTypeModal">
+<!-- Backdrop -->
+<div class="modal-overlay absolute inset-0 backdrop-blur-sm"></div>
+<!-- Modal Content Container -->
+<div class="relative bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden animate-in slide-in-from-bottom duration-300" data-purpose="modal-container">
+<!-- BEGIN: Modal Header -->
+<div class="p-4 border-b flex justify-between items-center bg-white sticky top-0 z-10">
+<button class="text-gray-400 p-1" onclick="closeModal()">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<h2 class="text-lg font-bold text-primary">نوع العقار</h2>
+<div class="w-8"></div> <!-- Spacer for centering -->
+</div>
+<!-- END: Modal Header -->
+<!-- BEGIN: Tabs Navigation -->
+<nav class="flex border-b">
+<button class="flex-1 py-3 text-center font-medium border-b-2 border-primary text-primary tab-transition text-sm" data-purpose="tab-button" id="tab-residential" onclick="switchTab('residential')">
+          سكني
+        </button>
+<button class="flex-1 py-3 text-center font-medium border-b-2 border-transparent text-gray-500 tab-transition text-sm" data-purpose="tab-button" id="tab-commercial" onclick="switchTab('commercial')">
+          تجاري
+        </button>
+</nav>
+<!-- END: Tabs Navigation -->
+<!-- BEGIN: Selection List -->
+<div class="flex-1 overflow-y-auto p-5">
+<!-- Residential Options -->
+<div class="grid grid-cols-2 gap-2.5" data-purpose="options-grid" id="residential-content">
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer bg-secondary border-primary text-primary font-medium text-xs transition-colors" onclick="selectOption(this)">شقة</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">فيلا</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">عمارة سكنية</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">أرض سكنية</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">استراحة</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">شاليه</div>
+</div>
+<!-- Commercial Options (Hidden by default) -->
+<div class="grid grid-cols-2 gap-2.5" data-purpose="options-grid" id="commercial-content">
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">عمارة تجارية</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">أرض تجارية</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">أرض صناعية</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">مستودع</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">مزرعة</div>
+<div class="option-card border rounded-lg py-2.5 px-2 text-center cursor-pointer border-gray-100 text-gray-600 hover:bg-gray-50 text-xs transition-colors" onclick="selectOption(this)">أرض زراعية</div>
+</div>
+</div>
+<!-- END: Selection List -->
+<!-- BEGIN: Modal Footer -->
+<div class="p-4 border-t bg-white">
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg active:scale-[0.98] transition-transform" onclick="closeModal()">
+          تم
+        </button>
+</div>
+<!-- END: Modal Footer -->
+</div>
+</div>
+<!-- END: Property Type Modal -->
+<script data-purpose="modal-interactivity">
+    /**
+     * Handles switching between Residential and Commercial tabs
+     */
+    function switchTab(type) {
+      const resTab = document.getElementById('tab-residential');
+      const comTab = document.getElementById('tab-commercial');
+      const resContent = document.getElementById('residential-content');
+      const comContent = document.getElementById('commercial-content');
+
+      if (type === 'residential') {
+        resTab.classList.add('border-primary', 'text-primary');
+        resTab.classList.remove('border-transparent', 'text-gray-400');
+        comTab.classList.remove('border-primary', 'text-primary');
+        comTab.classList.add('border-transparent', 'text-gray-400');
+        
+        resContent.classList.remove('hidden');
+        comContent.classList.add('hidden');
+      } else {
+        comTab.classList.add('border-primary', 'text-primary');
+        comTab.classList.remove('border-transparent', 'text-gray-400');
+        resTab.classList.remove('border-primary', 'text-primary');
+        resTab.classList.add('border-transparent', 'text-gray-400');
+        
+        comContent.classList.remove('hidden');
+        resContent.classList.add('hidden');
+      }
+    }
+
+    /**
+     * Handles option selection styling
+     */
+    function selectOption(element) {
+      // Find current active option in the visible grid and reset it
+      const parentGrid = element.parentElement;
+      const allOptions = parentGrid.querySelectorAll('.option-card');
+      
+      allOptions.forEach(opt => {
+        opt.classList.remove('bg-secondary', 'border-primary', 'text-primary', 'font-medium');
+        opt.classList.add('border-gray-200', 'text-gray-700');
+      });
+
+      // Apply active style to selected element
+      element.classList.remove('border-gray-200', 'text-gray-700');
+      element.classList.add('bg-secondary', 'border-primary', 'text-primary', 'font-medium');
+    }
+
+    /**
+     * UI Helper to 'close' the modal (visual only for this demo)
+     */
+    function closeModal() {
+      const modal = document.getElementById('propertyTypeModal');
+      modal.style.display = 'none';
+    }
+  </script>
+</body></html>

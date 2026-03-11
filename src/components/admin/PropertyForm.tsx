@@ -29,7 +29,7 @@ export default function PropertyForm({ initialData, cities, allNeighborhoods, on
     const { showToast } = useToast();
     const [saving, setSaving] = useState(false);
     const [coverImage, setCoverImage] = useState<string>(initialData?.cover_image || "");
-    const [gallery, setGallery] = useState<string[]>(initialData?.images_gallery || []);
+    const [gallery, setGallery] = useState<string[]>(initialData?.gallery_images || []);
     const [uploadingCover, setUploadingCover] = useState(false);
     const [uploadingGallery, setUploadingGallery] = useState(false);
     const [mapsWarning, setMapsWarning] = useState(false);
@@ -136,7 +136,7 @@ export default function PropertyForm({ initialData, cities, allNeighborhoods, on
                 latitude: form.latitude ? parseFloat(form.latitude) : null,
                 longitude: form.longitude ? parseFloat(form.longitude) : null,
                 cover_image: coverImage,
-                images_gallery: gallery,
+                gallery_images: gallery,
             };
 
             const url = initialData?.id ? `/api/properties/${initialData.id}` : "/api/properties";

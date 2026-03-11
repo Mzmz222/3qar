@@ -19,19 +19,20 @@ export default function Footer({ settings }: { settings: Settings }) {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
                     {/* FAL License */}
                     <div className="font-bold text-gray-700">
-                        رقم رخصة فال: 1100218438
+                        {settings.fal_license || "رقم رخصة فال غير متوفر"}
                     </div>
 
-                    {/* Actions */}
                     <div className="flex items-center gap-4">
                         {/* Phone 1 */}
-                        <a
-                            href="tel:0591538123"
-                            className="flex items-center gap-2 bg-[#EFEBE9] text-[#5D4037] px-4 py-2.5 rounded-xl font-bold hover:bg-[#D7CCC8] transition-colors"
-                        >
-                            <Phone className="w-4 h-4" />
-                            <span>0591538123</span>
-                        </a>
+                        {settings.office_phone_1 && (
+                            <a
+                                href={`tel:${settings.office_phone_1}`}
+                                className="flex items-center gap-2 bg-[#EFEBE9] text-[#5D4037] px-4 py-2.5 rounded-xl font-bold hover:bg-[#D7CCC8] transition-colors"
+                            >
+                                <Phone className="w-4 h-4" />
+                                <span>{settings.office_phone_1}</span>
+                            </a>
+                        )}
 
                         {/* WhatsApp group */}
                         {settings.whatsapp_group_link && (
